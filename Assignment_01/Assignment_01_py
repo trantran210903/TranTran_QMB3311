@@ -1,1 +1,35 @@
 assignment 1
+# (a) Pick a number between 1 and 9
+number = int(input("Pick a number between 1 and 9: "))
+
+# (b) Multiply by 2
+result = number * 2
+
+# (c) Add 5
+result = result + 5
+
+# (d) Multiply by 50
+result = result * 50
+
+# (e) Birthday check
+birthday_passed = input("Have you had your birthday this year? (yes/no): ").lower()
+
+if birthday_passed == "yes":
+    result = result + 1750
+else:
+    result = result + 1749
+
+# (f) Add the last two digits of the current year
+current_year = int(input("Enter the current year (e.g., 2026): "))
+last_two_digits = current_year % 100
+result = result + last_two_digits
+
+# (g) Subtract birth year
+birth_year = int(input("Enter your birth year (e.g., 2004): "))
+result = result - birth_year
+
+# (h) Final result
+print("\nYour magic number is:", result)
+print("The first digit is your original number.")
+print("The last two digits are your age!")
+
