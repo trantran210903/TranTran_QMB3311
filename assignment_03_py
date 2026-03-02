@@ -1,0 +1,82 @@
+assignment 3
+
+#(a) CESutitily
+
+def CESutility_valid(x:float, y:float, r:float) -> float:
+    """ 
+    x, y: quantity of two goods
+    r: subtitution parameters
+    utility function u(x,y) = (x^r + y^r)^(1/r)
+    condition
+    x >= 0
+    y >= 0
+    r > 0
+    """
+    if x < 0:
+        print("Error: x must be non-negative.")
+        return None
+    if y < 0:
+        print("Error: y must be non-negative")
+        return None
+    if r <= 0:
+        print("Error: r must be positive")
+        return None
+    return (x ** r + y ** r) ** (1/r)
+
+print(CESutility_valid(4, 9, 0.5))
+
+#(b) CESutility in budget
+
+def CESutility_in_budget(x:float, y:float, r:float, p_x:float, p_y:float, w:float) ->float:
+    """ 
+    x, y: quanity of two goods
+    r: substitution parameters
+    p_x, p_y: price of two goods
+    the consumer's basket of goods should cost no more than their wealth w >= p_x * x + p_y * y
+    condition
+    p_x >= 0
+    p_y >= 0
+    r > 0
+    """
+    if p_x < 0 or p_y < 0:
+        print("Error: Prices must be non-negative")
+        return None
+    if r <= 0:
+        print("Error: r must be strictly positive")
+        return None
+    if w < p_x * x + p_y * y:
+        print("Error: Bundle exceed budget")
+        return None
+    return CESutility(x, y, r, p_x, p_y, w)
+
+#(c) logit
+
+import math
+
+def logit(x:float, beta0:float, beta1:float) -> float:
+    """ 
+    compute logistic probability
+    x: explanatory variable
+    beta0: intercept
+    beta1: slope coefficient
+    Prob = (e^(beta0 + xbeta1)) / (1 + e^(beta0 + xbeta1))
+    """
+    exponent = beta0 + x * beta1
+    exp_value = math.exp(exponent)
+    return exp_value / (1 + exp_value)
+
+#(d) logistic regression
+
+def logit_like(yi:int, xi:float, beta0:float, beta1:float) -> float:
+    """ 
+    return log-likelihood for one observation
+    """
+    p = logit(xi, beta0, beta1)
+    
+    if yi == 1:
+        return math.log(p)
+    if yi == 0:
+        return math.log(1-p)
+    else:
+        print("Error: yi must be 0 to 1")
+        return None
