@@ -1,0 +1,47 @@
+Assignment 2
+#(a) present value function
+
+def present_value(cash_flow:float, rate:float, years:float) -> float:
+    """ 
+    calculate the present value of future cash flow
+    """
+    return cash_flow / ((1 + rate) ** years)
+
+
+#(b) future value function
+
+def future_value(cash_flow:float, rate:float, years:float) -> float:
+    """ 
+    calculate the future value of a present cash flow
+    """ 
+    return present_value / ((1 + rate) ** years)
+
+#(c) total revenue function
+
+def total_revenue(quantity:float, price:float) -> float:
+    """ 
+    calculate the revenue earned by a firm selling a product at a fixed price
+    """
+    return quantity * price
+
+#(d) total cost function
+
+def total_cost(q:float, a:float, b:float) -> float:
+    """ 
+    q: number of units produced
+    b: fixed cost
+    a: a constant multiplied by the square of the number of units sold
+    
+    Calculate the total cost using TC(q) = a * q^2 + b
+    """
+    return a * (q ** 2) + b
+
+#(e) utility function
+
+def CESutility(x:float, y:float, r:float) -> float:
+    """ 
+    x, y: quanity of two goods
+    r: substitution parameters
+    utility function u(x,y) = (x^r + y^r)^(1/r)
+    """
+    return (x ** r + y ** r) ** (1 / r)
