@@ -1,4 +1,4 @@
-# NBA Shot Chart Analysis - 2019-20 Season
+# NBA Shot Chart Analysis 19_20
 
 import pandas as pd
 import numpy as np
